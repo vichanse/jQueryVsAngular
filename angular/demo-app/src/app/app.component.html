@@ -1,0 +1,22 @@
+<div class="pt-3">
+  <button (click)="updateBeers()" class="btn btn-primary">Display attenuation level</button>
+</div>
+
+<div class="pt-3"><input [formControl]="search" placeholder="Enter search description" /></div>
+<br />
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <th>Image</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Alcohol By Volume</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let beer of beers$ | async | filter: search.value">
+      <td><img src="{{ beer.image_url }}" width="20" height="50" /></td>
+      <td>{{ beer.name }}</td>
+      <td>{{ beer.description }}</td>
+      <td>{{ beer.abv }}</td>
+    </tr>
+  </tbody>
+</table>
